@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Email form demo | AccessLoop</title>
+  <link rel="stylesheet" href="/demo.css">
+  <script src="/demo.js" defer></script>
+</head>
+<body>
+  <main>
+    <h1>Email form demo</h1>
+    <p>Enter an email address to try the form. The demo stores no data.</p>
+    <form id="email-form">
+      <span>Email address</span>
+      <input id="email" name="email" type="email" autocomplete="email" required>
+      <button id="submit" class="icon-button" type="submit"></button>
+    </form>
+    <output id="confirmation" form="email-form"></output>
+  </main>
+</body>
+</html>

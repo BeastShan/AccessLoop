@@ -1,0 +1,28 @@
+{
+  "name": "accessloop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Turn local browser accessibility findings into reviewable engineering tasks.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=24 <25" },
+  "scripts": {
+    "browser:install": "playwright install chromium",
+    "start": "node src/demo-server.ts",
+    "scan": "node src/cli.ts scan",
+    "scan:before": "npm run scan -- --url http://127.0.0.1:4173/before.html --out reports/local/before",
+    "scan:after": "npm run scan -- --url http://127.0.0.1:4173/after.html --out reports/local/after",
+    "task:generate": "node src/cli.ts task",
+    "test": "playwright test",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "playwright": "1.65.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.1",
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2"
+  }
+}

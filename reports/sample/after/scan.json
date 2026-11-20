@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "url": "http://127.0.0.1:4173/after.html",
+  "capturedAt": "2026-11-20T10:18:27.093Z",
+  "engine": {
+    "name": "axe-core",
+    "version": "4.14.1"
+  },
+  "browser": {
+    "name": "chromium",
+    "version": "159.0.8154.6"
+  },
+  "screenshot": "page.png",
+  "summary": {
+    "violations": 0,
+    "passed": 22,
+    "incomplete": 0,
+    "inapplicable": 68
+  },
+  "violations": []
+}

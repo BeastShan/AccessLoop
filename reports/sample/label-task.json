@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "title": "Fix accessibility rule label: Form elements must have labels",
+  "rule": {
+    "id": "label",
+    "description": "Ensure every form element has a label",
+    "help": "Form elements must have labels",
+    "impact": "critical"
+  },
+  "element": {
+    "target": [
+      "#email"
+    ],
+    "html": "<input id=\"email\" name=\"email\" type=\"email\" autocomplete=\"email\" required=\"\">",
+    "impact": "critical",
+    "failureSummary": "Fix any of the following:\n  Element does not have an implicit (wrapped) <label>\n  Element does not have an explicit <label>\n  aria-label attribute does not exist or is empty\n  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty\n  Element has no title attribute\n  Element has no placeholder attribute\n  Element's default semantics were not overridden with role=\"none\" or role=\"presentation\""
+  },
+  "reproduction": {
+    "url": "http://127.0.0.1:4173/before.html",
+    "argv": [
+      "npm",
+      "run",
+      "scan",
+      "--",
+      "--url",
+      "http://127.0.0.1:4173/before.html"
+    ],
+    "steps": [
+      "Start the authorized local application at the recorded origin.",
+      "Run the scanner with the recorded arguments from the AccessLoop checkout.",
+      "Open the printed report path and confirm the rule and target against the browser evidence."
+    ]
+  },
+  "references": [
+    "https://dequeuniversity.com/rules/axe/4.14/label?application=playwright",
+    "https://www.w3.org/TR/html-aria/",
+    "https://www.w3.org/TR/wai-aria/",
+    "https://www.w3.org/WAI/tutorials/forms/labels/"
+  ],
+  "scope": {
+    "allowedFiles": [
+      "public/before.html",
+      "tests/accessloop.spec.ts"
+    ],
+    "restrictions": [
+      "Change only the explicitly authorized files.",
+      "Keep authentication, billing, production configuration and unrelated infrastructure out of scope."
+    ]
+  },
+  "acceptanceCriteria": [
+    "The recorded violation no longer occurs at the affected control or its replacement.",
+    "The audited page introduces no new axe violations with the same scan settings and rule coverage.",
+    "Accessible names, keyboard navigation, focus and existing functionality are verified for the affected interaction."
+  ],
+  "regressionTests": [
+    "Add or update a browser regression test for the affected control using its role and accessible name or label where applicable.",
+    "Exercise the affected behavior and its keyboard path, and run the relevant existing regression suite.",
+    "Rerun the same axe scan and compare findings against the original report."
+  ],
+  "humanReview": [
+    "A reviewer confirms the scope, semantics, and keyboard and focus behavior before merge.",
+    "Report incomplete axe checks, unverified behavior and any needed scope changes to the reviewer.",
+    "Leave merge and deployment to authorized humans."
+  ]
+}
